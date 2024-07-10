@@ -24,13 +24,13 @@ class MatchReplace():
         """
         #todo add an option to ignore large requests 
         padding = 5
-        labelWidth = 140
+        labelWidth = 200
         labelHeight = 30
         editHeight = 110
-        editWidth = 300
-        buttonWidth = 120 
+        editWidth = 1200
+        buttonWidth = 300
         buttonHeight = 30
-        column1X = 10
+        column1X = 30
         column2X = column1X + labelWidth + padding
         column3X = column2X + editWidth + padding
         MRStrings = ["Headers (simple string):",
@@ -81,11 +81,11 @@ class MatchReplace():
         scrollMRList.setBorder(LineBorder(Color.BLACK)) 
 
         self._extender.MRAdd = JButton("Add filter", actionPerformed=self.addMRFilter) 
-        self._extender.MRAdd.setBounds(column2X, row4Y, buttonWidth, buttonHeight)
+        self._extender.MRAdd.setBounds(column3X, row4Y + 50, buttonWidth, buttonHeight)
         self._extender.MRDel = JButton("Remove filter", actionPerformed=self.delMRFilter) 
-        self._extender.MRDel.setBounds(column3X, row5Y, buttonWidth, buttonHeight)
+        self._extender.MRDel.setBounds(column3X, row5Y + 50, buttonWidth, buttonHeight)
         self._extender.MRMod = JButton("Modify filter", actionPerformed=self.modMRFilter)
-        self._extender.MRMod.setBounds(column3X, row5Y + buttonHeight + padding, buttonWidth, buttonHeight)
+        self._extender.MRMod.setBounds(column3X, row5Y + buttonHeight + padding + 50, buttonWidth, buttonHeight)
 
         self._extender.MRFeedback = JLabel("")
         self._extender.MRFeedback.setBounds(column1X, row6Y, column3X + buttonWidth, labelHeight)

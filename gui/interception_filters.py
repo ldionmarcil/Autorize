@@ -52,14 +52,14 @@ class InterceptionFilters():
                      "Drop proxy listener ports: (Separated by comma)"
                      ]
         self._extender.IFType = JComboBox(IFStrings)
-        self._extender.IFType.setBounds(80, 10, 430, 30)
+        self._extender.IFType.setBounds(200, 10, 1200, 30)
        
         self._extender.IFModel = DefaultListModel()
         self._extender.IFList = JList(self._extender.IFModel)
 
         scrollIFList = JScrollPane(self._extender.IFList)
         scrollIFList.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED)
-        scrollIFList.setBounds(80, 175, 300, 110)
+        scrollIFList.setBounds(200, 175, 900, 110)
         scrollIFList.setBorder(LineBorder(Color.BLACK))
 
         # Adding some default interception filters
@@ -71,7 +71,7 @@ class InterceptionFilters():
 
         scrollIFText = JScrollPane(self._extender.IFText)
         scrollIFText.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED)
-        scrollIFText.setBounds(80, 50, 300, 110)
+        scrollIFText.setBounds(200, 50, 1200, 110)
 
         IFLType = JLabel("Type:")
         IFLType.setBounds(10, 10, 140, 30)
@@ -83,11 +83,11 @@ class InterceptionFilters():
         IFLabelList.setBounds(10, 165, 140, 30)
 
         self._extender.IFAdd = JButton("Add filter", actionPerformed=self.addIFFilter)
-        self._extender.IFAdd.setBounds(390, 85, 120, 30)
+        self._extender.IFAdd.setBounds(1100, 170, 300, 30)
         self._extender.IFDel = JButton("Remove filter", actionPerformed=self.delIFFilter)
-        self._extender.IFDel.setBounds(390, 210, 120, 30)
+        self._extender.IFDel.setBounds(1100, 210, 300, 30)
         self._extender.IFMod = JButton("Modify filter", actionPerformed=self.modIFFilter)
-        self._extender.IFMod.setBounds(390, 250, 120, 30)
+        self._extender.IFMod.setBounds(1100, 250, 300, 30)
 
         self._extender.filtersPnl = JPanel()
         self._extender.filtersPnl.setLayout(None)

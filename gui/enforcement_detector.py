@@ -54,32 +54,32 @@ class EnforcementDetectors():
             "Status code NOT equals: (numbers only)"
         ]
         self._extender.EDType = JComboBox(EDStrings)
-        self._extender.EDType.setBounds(80, 10, 430, 30)
+        self._extender.EDType.setBounds(200, 10, 1200, 30)
 
         self._extender.EDText = JTextArea("", 5, 30)
 
         scrollEDText = JScrollPane(self._extender.EDText)
         scrollEDText.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED)
-        scrollEDText.setBounds(80, 50, 300, 110)
+        scrollEDText.setBounds(200, 50, 1200, 110)
 
         self._extender.EDModel = DefaultListModel()
         self._extender.EDList = JList(self._extender.EDModel)
 
         scrollEDList = JScrollPane(self._extender.EDList)
         scrollEDList.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED)
-        scrollEDList.setBounds(80, 175, 300, 110)
+        scrollEDList.setBounds(200, 175, 490, 110)
         scrollEDList.setBorder(LineBorder(Color.BLACK))
 
         self._extender.EDAdd = JButton("Add filter", actionPerformed=self.addEDFilter)
-        self._extender.EDAdd.setBounds(390, 85, 120, 30)
+        self._extender.EDAdd.setBounds(900, 170, 300, 30)
         self._extender.EDDel = JButton("Remove filter", actionPerformed=self.delEDFilter)
-        self._extender.EDDel.setBounds(390, 210, 120, 30)
+        self._extender.EDDel.setBounds(900, 210, 300, 30)
         self._extender.EDMod = JButton("Modify filter", actionPerformed=self.modEDFilter)
-        self._extender.EDMod.setBounds(390, 250, 120, 30)
+        self._extender.EDMod.setBounds(900, 250, 300, 30)
 
         AndOrStrings = ["And", "Or"]
         self._extender.AndOrType = JComboBox(AndOrStrings)
-        self._extender.AndOrType.setBounds(390, 170, 120, 30)
+        self._extender.AndOrType.setBounds(700, 170, 120, 30)
 
         self._extender.EDPnl = JPanel()
         self._extender.EDPnl.setLayout(None)
@@ -128,35 +128,35 @@ class EnforcementDetectors():
             "Status code NOT equals: (numbers only)"
         ]
         self._extender.EDTypeUnauth = JComboBox(EDStrings)
-        self._extender.EDTypeUnauth.setBounds(80, 10, 430, 30)
+        self._extender.EDTypeUnauth.setBounds(200, 10, 1200, 30)
 
         self._extender.EDTextUnauth = JTextArea("", 5, 30)
 
         scrollEDTextUnauth = JScrollPane(self._extender.EDTextUnauth)
         scrollEDTextUnauth.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED)
-        scrollEDTextUnauth.setBounds(80, 50, 300, 110)
+        scrollEDTextUnauth.setBounds(200, 50, 1200, 110)
 
         self._extender.EDModelUnauth = DefaultListModel()
         self._extender.EDListUnauth = JList(self._extender.EDModelUnauth)
 
         scrollEDListUnauth = JScrollPane(self._extender.EDListUnauth)
         scrollEDListUnauth.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED)
-        scrollEDListUnauth.setBounds(80, 175, 300, 110)
+        scrollEDListUnauth.setBounds(200, 175, 490, 110)
         scrollEDListUnauth.setBorder(LineBorder(Color.BLACK))
 
         self._extender.EDAddUnauth = JButton("Add filter",
                                    actionPerformed=self.addEDFilterUnauth)
-        self._extender.EDAddUnauth.setBounds(390, 85, 120, 30)
+        self._extender.EDAddUnauth.setBounds(900, 170, 300, 30)
         self._extender.EDDelUnauth = JButton("Remove filter",
                                    actionPerformed=self.delEDFilterUnauth)
-        self._extender.EDDelUnauth.setBounds(390, 210, 120, 30)
+        self._extender.EDDelUnauth.setBounds(900, 210, 300, 30)
         self._extender.EDModUnauth = JButton("Modify filter",
                                    actionPerformed=self.modEDFilterUnauth)
-        self._extender.EDModUnauth.setBounds(390, 250, 120, 30)
+        self._extender.EDModUnauth.setBounds(900, 250, 300, 30)
 
         AndOrStrings = ["And", "Or"]
         self._extender.AndOrTypeUnauth = JComboBox(AndOrStrings)
-        self._extender.AndOrTypeUnauth.setBounds(390, 170, 120, 30)
+        self._extender.AndOrTypeUnauth.setBounds(700, 170, 120, 30)
 
         self._extender.EDPnlUnauth = JPanel()
         self._extender.EDPnlUnauth.setLayout(None)

@@ -28,49 +28,49 @@ class ConfigurationTab():
         self.DEFUALT_REPLACE_TEXT = "Cookie: Insert=injected; cookie=or;\nHeader: here"
         self._extender.startButton = JToggleButton("Autorize is off",
                                     actionPerformed=self.startOrStop)
-        self._extender.startButton.setBounds(10, 20, 230, 30)
+        self._extender.startButton.setBounds(10, 20, 260, 50)
 
         self._extender.clearButton = JButton("Clear List", actionPerformed=self.clearList)
-        self._extender.clearButton.setBounds(10, 80, 100, 30)
+        self._extender.clearButton.setBounds(10, 80, 200, 50)
         self._extender.autoScroll = JCheckBox("Auto Scroll")
-        self._extender.autoScroll.setBounds(145, 80, 130, 30)
+        self._extender.autoScroll.setBounds(10, 135, 300, 50)
 
         self._extender.ignore304 = JCheckBox("Ignore 304/204 status code responses")
-        self._extender.ignore304.setBounds(280, 5, 300, 30)
+        self._extender.ignore304.setBounds(280, 5, 800, 30)
         self._extender.ignore304.setSelected(True)
 
         self._extender.prevent304 = JCheckBox("Prevent 304 Not Modified status code")
-        self._extender.prevent304.setBounds(280, 25, 300, 30)
+        self._extender.prevent304.setBounds(280, 35, 800, 30)
         self._extender.interceptRequestsfromRepeater = JCheckBox("Intercept requests from Repeater")
-        self._extender.interceptRequestsfromRepeater.setBounds(280, 45, 300, 30)
+        self._extender.interceptRequestsfromRepeater.setBounds(280, 65, 800, 30)
 
         self._extender.doUnauthorizedRequest = JCheckBox("Check unauthenticated")
-        self._extender.doUnauthorizedRequest.setBounds(280, 65, 300, 30)
+        self._extender.doUnauthorizedRequest.setBounds(280, 95, 800, 30)
         self._extender.doUnauthorizedRequest.setSelected(True)
 
         self._extender.replaceQueryParam = JCheckBox("Replace query params", actionPerformed=self.replaceQueryHanlder)
-        self._extender.replaceQueryParam.setBounds(280, 85, 300, 30)
+        self._extender.replaceQueryParam.setBounds(280, 125, 800, 30)
         self._extender.replaceQueryParam.setSelected(False)
 
         self._extender.saveHeadersButton = JButton("Add",
                                         actionPerformed=self.saveHeaders)
-        self._extender.saveHeadersButton.setBounds(315, 115, 80, 30)
+        self._extender.saveHeadersButton.setBounds(315, 195, 95, 50)
         
         self._extender.removeHeadersButton = JButton("Remove",
                                         actionPerformed=self.removeHeaders)
-        self._extender.removeHeadersButton.setBounds(400, 115, 80, 30)
+        self._extender.removeHeadersButton.setBounds(400, 195, 150, 50)
 
         savedHeadersTitles = self.getSavedHeadersTitles()
         self._extender.savedHeadersTitlesCombo = JComboBox(savedHeadersTitles)
         self._extender.savedHeadersTitlesCombo.addActionListener(SavedHeaderChange(self._extender))
-        self._extender.savedHeadersTitlesCombo.setBounds(10, 115, 300, 30)
+        self._extender.savedHeadersTitlesCombo.setBounds(10, 195, 450, 50)
 
         self._extender.replaceString = JTextArea(self.DEFUALT_REPLACE_TEXT, 5, 30)
         self._extender.replaceString.setWrapStyleWord(True)
         self._extender.replaceString.setLineWrap(True)
         scrollReplaceString = JScrollPane(self._extender.replaceString)
         scrollReplaceString.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED)
-        scrollReplaceString.setBounds(10, 150, 470, 150)
+        scrollReplaceString.setBounds(10, 250, 1200, 150)
 
         fromLastRequestLabel = JLabel("From last request:")
         fromLastRequestLabel.setBounds(10, 305, 250, 30)
@@ -78,12 +78,12 @@ class ConfigurationTab():
         self._extender.fetchCookiesHeaderButton = JButton("Fetch Cookies header",
                                 actionPerformed=self.fetchCookiesHeader)
         self._extender.fetchCookiesHeaderButton.setEnabled(False)
-        self._extender.fetchCookiesHeaderButton.setBounds(10, 330, 220, 30)
+        self._extender.fetchCookiesHeaderButton.setBounds(10, 430, 300, 50)
 
         self._extender.fetchAuthorizationHeaderButton = JButton("Fetch Authorization header",
                                 actionPerformed=self.fetchAuthorizationHeader)
         self._extender.fetchAuthorizationHeaderButton.setEnabled(False)
-        self._extender.fetchAuthorizationHeaderButton.setBounds(260, 330, 220, 30)
+        self._extender.fetchAuthorizationHeaderButton.setBounds(310, 430, 400, 50)
 
         self._extender.filtersTabs = JTabbedPane()
         self._extender.filtersTabs = self._extender.filtersTabs
