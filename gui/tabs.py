@@ -58,7 +58,8 @@ class Tabs():
         tableWidth = self._extender.logTable.getPreferredSize().width
         self._extender.logTable.getColumn("ID").setPreferredWidth(Math.round(tableWidth / 50 * 2))
         self._extender.logTable.getColumn("Method").setPreferredWidth(Math.round(tableWidth / 50 * 3))
-        self._extender.logTable.getColumn("URL").setPreferredWidth(Math.round(tableWidth / 50 * 25))
+        self._extender.logTable.getColumn("Domain").setPreferredWidth(Math.round(tableWidth / 50 * 25))
+        self._extender.logTable.getColumn("Path").setPreferredWidth(Math.round(tableWidth / 50 * 25))
         self._extender.logTable.getColumn("Orig. Len").setPreferredWidth(Math.round(tableWidth / 50 * 4))
         self._extender.logTable.getColumn("Modif. Len").setPreferredWidth(Math.round(tableWidth / 50 * 4))
         self._extender.logTable.getColumn("Unauth. Len").setPreferredWidth(Math.round(tableWidth / 50 * 4))

@@ -107,10 +107,10 @@ class TableModel(AbstractTableModel):
             return 0
 
     def getColumnCount(self):
-        return 8
+        return 9
 
     def getColumnName(self, columnIndex):
-        data = ['ID','Method', 'URL', 'Orig. Len', 'Modif. Len', "Unauth. Len",
+        data = ['ID','Method', 'Domain', 'Path', 'Orig. Len', 'Modif. Len', "Unauth. Len",
                 "Authz. Status", "Unauth. Status"]
         try:
             return data[columnIndex]
@@ -118,7 +118,7 @@ class TableModel(AbstractTableModel):
             return ""
 
     def getColumnClass(self, columnIndex):
-        data = [Integer, String, String, Integer, Integer, Integer, String, String]
+        data = [Integer, String, String, String, Integer, Integer, Integer, String, String]
         try:
             return data[columnIndex]
         except IndexError:
@@ -131,22 +131,24 @@ class TableModel(AbstractTableModel):
         if columnIndex == 1:
             return logEntry._method
         if columnIndex == 2:
-            return logEntry._url.toString()
+            return logEntry._url.getHost()
         if columnIndex == 3:
+            return logEntry._url.getPath()
+        if columnIndex == 4:
             response = logEntry._originalrequestResponse.getResponse()
             return len(logEntry._originalrequestResponse.getResponse()) - self._extender._helpers.analyzeResponse(response).getBodyOffset()
-        if columnIndex == 4:
+        if columnIndex == 5:
             response = logEntry._requestResponse.getResponse()
             return len(logEntry._requestResponse.getResponse()) - self._extender._helpers.analyzeResponse(response).getBodyOffset()
-        if columnIndex == 5:
+        if columnIndex == 6:
             if logEntry._unauthorizedRequestResponse is not None:
                 response = logEntry._unauthorizedRequestResponse.getResponse()
                 return len(logEntry._unauthorizedRequestResponse.getResponse()) - self._extender._helpers.analyzeResponse(response).getBodyOffset()
             else:
                 return 0
-        if columnIndex == 6:
-            return logEntry._enfocementStatus   
         if columnIndex == 7:
+            return logEntry._enfocementStatus   
+        if columnIndex == 8:
             return logEntry._enfocementStatusUnauthorized        
         return ""
 
@@ -173,7 +175,7 @@ class Table(JTable):
     def prepareRenderer(self, renderer, row, col):
         comp = JTable.prepareRenderer(self, renderer, row, col)
         value = self._extender.tableModel.getValueAt(self._extender.logTable.convertRowIndexToModel(row), col)
-        if col == 6 or col == 7:
+        if col == 7 or col == 8:
             if value == self._extender.BYPASSSED_STR:
                 comp.setBackground(Color(255, 153, 153))
                 comp.setForeground(Color.BLACK)
@@ -211,15 +213,15 @@ class Table(JTable):
 
         self._extender._currentlyDisplayedItem = logEntry
 
-        if col == 3:
+        if col == 4:
             collapse(self._extender, self._extender.modified_requests_tabs)
             collapse(self._extender, self._extender.unauthenticated_requests_tabs)
             expand(self._extender, self._extender.original_requests_tabs)
-        elif col == 4 or col == 6:
+        elif col == 5 or col == 7:
             collapse(self._extender, self._extender.original_requests_tabs)
             collapse(self._extender, self._extender.unauthenticated_requests_tabs)
             expand(self._extender, self._extender.modified_requests_tabs)
-        elif col == 5 or col == 7:
+        elif col == 6 or col == 8:
             collapse(self._extender, self._extender.original_requests_tabs)
             collapse(self._extender, self._extender.modified_requests_tabs)
             expand(self._extender, self._extender.unauthenticated_requests_tabs)
@@ -256,19 +258,19 @@ class TableRowFilter(RowFilter):
         self._extender = extender
 
     def include(self, entry):
-        if self._extender.showAuthBypassModified.isSelected() and self._extender.BYPASSSED_STR == entry.getValue(6):
+        if self._extender.showAuthBypassModified.isSelected() and self._extender.BYPASSSED_STR == entry.getValue(7):
             return True
-        elif self._extender.showAuthPotentiallyEnforcedModified.isSelected() and self._extender.IS_ENFORCED_STR == entry.getValue(6):
+        elif self._extender.showAuthPotentiallyEnforcedModified.isSelected() and self._extender.IS_ENFORCED_STR == entry.getValue(7):
             return True
-        elif self._extender.showAuthEnforcedModified.isSelected() and self._extender.ENFORCED_STR == entry.getValue(6):
+        elif self._extender.showAuthEnforcedModified.isSelected() and self._extender.ENFORCED_STR == entry.getValue(7):
             return True
-        elif self._extender.showAuthBypassUnauthenticated.isSelected() and self._extender.BYPASSSED_STR == entry.getValue(7):
+        elif self._extender.showAuthBypassUnauthenticated.isSelected() and self._extender.BYPASSSED_STR == entry.getValue(8):
             return True
-        elif self._extender.showAuthPotentiallyEnforcedUnauthenticated.isSelected() and self._extender.IS_ENFORCED_STR == entry.getValue(7):
+        elif self._extender.showAuthPotentiallyEnforcedUnauthenticated.isSelected() and self._extender.IS_ENFORCED_STR == entry.getValue(8):
             return True
-        elif self._extender.showAuthEnforcedUnauthenticated.isSelected() and self._extender.ENFORCED_STR == entry.getValue(7):
+        elif self._extender.showAuthEnforcedUnauthenticated.isSelected() and self._extender.ENFORCED_STR == entry.getValue(8):
             return True
-        elif self._extender.showDisabledUnauthenticated.isSelected() and "Disabled" == entry.getValue(7):
+        elif self._extender.showDisabledUnauthenticated.isSelected() and "Disabled" == entry.getValue(8):
             return True
         else:
             return False
